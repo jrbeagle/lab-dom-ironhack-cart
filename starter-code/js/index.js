@@ -1,14 +1,6 @@
-function deleteItem(element, i, deleteCount){
+function deleteItem(element){
   document.body.removeChild(element);
-  var items = document.querySelectorAll('.col-xs-1');
-  console.log(deleteCount);
-  document.body.removeChild(items[i - deleteCount]);
-  var prices = document.querySelectorAll('.col-xs-2');
-  document.body.removeChild(prices[i - deleteCount]);
-  var quantities = document.querySelectorAll('.col-xs-3');
-  document.body.removeChild(quantities[i - deleteCount]);
-  var itemTotal = document.querySelectorAll('.col-xs-4');
-  document.body.removeChild(itemTotal[i - deleteCount]);
+
 }
 
 function getPriceByProduct(itemNode){
@@ -84,11 +76,9 @@ window.onload = function(){
   calculatePriceButton.onclick = getTotalPrice;
   createItemButton.onclick = createNewItem;
 
-  var deleteCount = 0;
     deleteButtons.forEach( function(button, i) {
     button.onclick = function () {
-        deleteItem(this, i, deleteCount);
-        deleteCount += 1;
+        deleteItem(this.parentNode);
       };
     });
 };
